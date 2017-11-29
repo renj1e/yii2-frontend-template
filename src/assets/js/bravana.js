@@ -1,5 +1,22 @@
 $(document).ready( function() {
+			
+		$('.navbar-default').removeClass('navbar-fixed-top');
+		if( $(window).width() < 993 ) {
 
+			// reset padding-top since navbar-fixed-top is disabled
+
+			// re-enable dropdown cart toggle
+			$('.dropdown-cart .dropdown-toggle').removeClass('disabled');
+			$('ul.main-navbar-nav > li > .dropdown-toggle').removeClass('disabled');
+		} else {
+
+			// body padding-top adjustment for page with navbar-fixed-top
+			$('body').css('padding-top', $('.navbar-fixed-top').innerHeight());
+
+			// disable toggle
+			$('.dropdown-cart .dropdown-toggle').addClass('disabled');
+			$('ul.main-navbar-nav > li > .dropdown-toggle').addClass('disabled');
+		}
 	/*--------------------------------/
 	/* NAVIGATION
 	/*-------------------------------*/
@@ -10,35 +27,35 @@ $(document).ready( function() {
 
 	function checkNavByScreenSize() {
 		// mobile main navigation
-		if( $(window).width() < 993 ) {
+		// if( $(window).width() < 993 ) {
 
-			// reset padding-top since navbar-fixed-top is disabled
-			$('body').css('padding-top', 0);
+		// 	// reset padding-top since navbar-fixed-top is disabled
+		// 	$('body').css('padding-top', 0);
 
-			// dropdown menu in navbar-fixed-top can't be scrolled, so we disabled it in mobile screen (EXCEPT for one-page template)
-			if($('.navbar-default').hasClass('navbar-fixed-top') && $('.navbar-default .nav-onepage').length <= 0) {
-				$('.navbar-default').removeClass('navbar-fixed-top');
-			}
+		// 	// dropdown menu in navbar-fixed-top can't be scrolled, so we disabled it in mobile screen (EXCEPT for one-page template)
+		// 	if($('.navbar-default').hasClass('navbar-fixed-top') && $('.navbar-default .nav-onepage').length <= 0) {
+		// 		$('.navbar-default').removeClass('navbar-fixed-top');
+		// 	}
 
-			// re-enable dropdown cart toggle
-			$('.dropdown-cart .dropdown-toggle').removeClass('disabled');
-			$('ul.main-navbar-nav > li > .dropdown-toggle').removeClass('disabled');
-		} else {
+		// 	// re-enable dropdown cart toggle
+		// 	$('.dropdown-cart .dropdown-toggle').removeClass('disabled');
+		// 	$('ul.main-navbar-nav > li > .dropdown-toggle').removeClass('disabled');
+		// } else {
 
-			// body padding-top adjustment for page with navbar-fixed-top
-			if($('.navbar').hasClass('navbar-fixed-top') && !$('.navbar').hasClass('ignore-paddingtop')) {
-				$('body').css('padding-top', $('.navbar-fixed-top').innerHeight());
-			}
+		// 	// body padding-top adjustment for page with navbar-fixed-top
+		// 	if($('.navbar').hasClass('navbar-fixed-top') && !$('.navbar').hasClass('ignore-paddingtop')) {
+		// 		$('body').css('padding-top', $('.navbar-fixed-top').innerHeight());
+		// 	}
 
-			// re-enable navbar-fixed-top
-			if($('.navbar-default').hasClass('ignore-paddingtop')) { // ignore-paddingtop class indicating that it's or it should a fixed-top nav
-				$('.navbar-default').addClass('navbar-fixed-top');
-			}
+		// 	// re-enable navbar-fixed-top
+		// 	if($('.navbar-default').hasClass('ignore-paddingtop')) { // ignore-paddingtop class indicating that it's or it should a fixed-top nav
+		// 		$('.navbar-default').addClass('navbar-fixed-top');
+		// 	}
 
-			// disable toggle
-			$('.dropdown-cart .dropdown-toggle').addClass('disabled');
-			$('ul.main-navbar-nav > li > .dropdown-toggle').addClass('disabled');
-		}
+		// 	// disable toggle
+		// 	$('.dropdown-cart .dropdown-toggle').addClass('disabled');
+		// 	$('ul.main-navbar-nav > li > .dropdown-toggle').addClass('disabled');
+		// }
 
 		// sidebar navigation on mobile
 		if($('.sidebarnav-toggle').length > 0) {
